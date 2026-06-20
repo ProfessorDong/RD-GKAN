@@ -1,0 +1,76 @@
+{
+  "erk_waves": {
+    "RD-GKAN": {
+      "one_step_rmse": 0.090195,
+      "rollout_rmse": 0.319483,
+      "D_learned": 0.2195
+    },
+    "MLP-RD": {
+      "one_step_rmse": 0.09051,
+      "rollout_rmse": 0.335071,
+      "D_learned": 0.0517
+    },
+    "dataset": {
+      "N": 167,
+      "T_total": 100,
+      "T_train": 70,
+      "T_test": 29,
+      "avg_degree": 5.18
+    }
+  },
+  "wound_healing": {
+    "Skin": {
+      "RD-GKAN": 0.2729,
+      "GNN": 0.2482,
+      "N": 500
+    },
+    "Wound1": {
+      "RD-GKAN": 0.2563,
+      "GNN": 0.2465,
+      "N": 500
+    },
+    "Wound7": {
+      "RD-GKAN": 0.2991,
+      "GNN": 0.26,
+      "N": 500
+    },
+    "Wound30": {
+      "RD-GKAN": 0.27,
+      "GNN": 0.245,
+      "N": 500
+    },
+    "note": "pseudo-positions used (spatial coords from tar.gz not yet extracted)"
+  },
+  "erk_ssbd": {
+    "rmse": 0.141222,
+    "D_learned": 0.0001,
+    "N": 13,
+    "T": 34
+  },
+  "staph_qs": {
+    "mm_experiments": 38,
+    "cc_experiments": 6,
+    "stardist_csv_format": {
+      "columns": [
+        "replicate",
+        "pos",
+        "chamber",
+        "frame",
+        "label",
+        "area",
+        "centroid-0",
+        "centroid-1",
+        "axis_major_length",
+        "axis_minor_length",
+        "eccentricity",
+        "intensity_mean",
+        "intensity_max",
+        "folder"
+      ],
+      "frames_per_experiment": 180,
+      "cells_per_frame": "~10",
+      "total_files_in_zip": 923678
+    },
+    "note": "Full temporal single-cell QS data with spatial positions available"
+  }
+}

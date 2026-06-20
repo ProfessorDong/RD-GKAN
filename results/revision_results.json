@@ -1,0 +1,125 @@
+{
+  "out_of_library": {
+    "in_library": {
+      "linear": {
+        "label": "$f(c) = -0.1c$",
+        "eps_recon_mean": 3.8609046936035156,
+        "eps_recon_std": 0.7014263545434051,
+        "eps_recon_all": [
+          3.1900413036346436,
+          4.829151630401611,
+          3.563521146774292
+        ],
+        "model_fit_rmse_mean": 0.00035619933817309215,
+        "dominant_basis": "x"
+      },
+      "hill": {
+        "label": "$f(c) = c^2/(1+c^2) - 0.3c$",
+        "eps_recon_mean": 29.11065928141276,
+        "eps_recon_std": 3.3681000912987042,
+        "eps_recon_all": [
+          25.890727996826172,
+          27.680858612060547,
+          33.76039123535156
+        ],
+        "model_fit_rmse_mean": 0.0004035307613936617,
+        "dominant_basis": "Hill2 x^2/(K^2+x^2)"
+      },
+      "mm_k1": {
+        "label": "$c/(1+c)-0.2c$",
+        "eps_recon_mean": 7.023451805114746,
+        "eps_recon_std": 1.2499920876070358,
+        "eps_recon_all": [
+          5.912890434265137,
+          6.387636184692383,
+          8.769828796386719
+        ],
+        "model_fit_rmse_mean": 0.000425329945375389,
+        "dominant_basis": "Hill2 x^2/(K^2+x^2)"
+      }
+    },
+    "out_of_library": {
+      "highfreq": {
+        "label": "$0.4\\sin(6c)-0.2c$",
+        "eps_recon_mean": 5.907954692840576,
+        "eps_recon_std": 1.838523704224458,
+        "eps_recon_all": [
+          7.334812641143799,
+          7.076894283294678,
+          3.312157154083252
+        ],
+        "model_fit_rmse_mean": 0.0010178557641273395,
+        "dominant_basis": "x^2"
+      },
+      "gauss_bump": {
+        "label": "$0.8e^{-(c-2)^2/0.2}-0.15c$",
+        "eps_recon_mean": 64.35003407796223,
+        "eps_recon_std": 0.2672277318035868,
+        "eps_recon_all": [
+          64.00828552246094,
+          64.66062927246094,
+          64.38118743896484
+        ],
+        "model_fit_rmse_mean": 0.0004779865589296842,
+        "dominant_basis": "x^3"
+      },
+      "double_bump": {
+        "label": "bimodal Gaussian",
+        "eps_recon_mean": 37.760815938313804,
+        "eps_recon_std": 1.6139592868078927,
+        "eps_recon_all": [
+          39.50156021118164,
+          35.611907958984375,
+          38.16897964477539
+        ],
+        "model_fit_rmse_mean": 0.0006712486026697551,
+        "dominant_basis": "x^2"
+      }
+    },
+    "summary": {
+      "in_library_eps_max": 33.76039123535156,
+      "out_library_eps_min": 3.312157154083252,
+      "rejection_threshold_pct": 18.536274194717407,
+      "separation_margin_pct": -30.44823408126831,
+      "detection_accuracy": 0.6666666666666666,
+      "in_library_mean": 13.331671926710342,
+      "out_library_mean": 36.0062682363722
+    }
+  },
+  "timestep_transfer": {
+    "h_train": 0.01,
+    "D_theta": 0.007510775234550238,
+    "D_continuous_est": 0.7510775234550238,
+    "D_true": 0.5,
+    "transfer": {
+      "0.005": {
+        "T_test": 400,
+        "scale": 0.5,
+        "rmse_rescaled": 0.07156762752973889,
+        "rmse_naive": 0.3224439210290657,
+        "rmse_retrained": 0.10772453204217057
+      },
+      "0.01": {
+        "T_test": 200,
+        "scale": 1.0,
+        "rmse_rescaled": 0.07157172082377086,
+        "rmse_naive": 0.07157172082377086,
+        "rmse_retrained": 0.05683120041090365
+      },
+      "0.02": {
+        "T_test": 100,
+        "scale": 2.0,
+        "rmse_rescaled": 0.07158077304135747,
+        "rmse_naive": 0.1852880172656338,
+        "rmse_retrained": 0.03914440022647128
+      },
+      "0.04": {
+        "T_test": 50,
+        "scale": 4.0,
+        "rmse_rescaled": 0.07159870240021786,
+        "rmse_naive": 0.2594953921935189,
+        "rmse_retrained": 0.031508249580007856
+      }
+    }
+  }
+}

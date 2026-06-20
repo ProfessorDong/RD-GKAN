@@ -1,0 +1,7 @@
+{
+  "n_bit_responses": 8,
+  "n_noise": 12,
+  "noise_mean": -0.00010962901208837012,
+  "noise_std": 0.012899201476715486,
+  "n_cir_estimates": 6
+}

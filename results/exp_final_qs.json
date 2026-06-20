@@ -1,0 +1,11 @@
+{
+  "hill_R2": 0.9704063265215096,
+  "hill_params": [
+    1.060158063405016,
+    0.4121877613890893,
+    0.8568259101640736
+  ],
+  "symbolic_accuracy_pct": 26.591034959467102,
+  "dominant_kinetics": "x^2/(K^2+x^2)",
+  "basis_type": "B-spline (Cox-de Boor)"
+}

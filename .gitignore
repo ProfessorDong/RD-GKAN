@@ -1,0 +1,60 @@
+# ============================================================
+# RD-GKAN — files EXCLUDED from the public code/data release
+# ============================================================
+
+# Raw datasets: public; obtain from the sources listed in DATA.md.
+# (46 GB total; individual files exceed GitHub's 100 MB limit.)
+data/
+
+# LaTeX manuscript + build artifacts (manuscript under peer review)
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.pdf
+*.tex
+*.cls
+*.synctex.gz
+texput.log
+
+# Large archives / binaries
+*.zip
+*.tar
+*.tar.gz
+*.tif
+*.cloupe
+*.h5
+*.docx
+
+# Confidential peer-review material — DO NOT publish
+RESPONSE_TO_REVIEWERS.md
+Reviewer*.pdf
+DecisionletterInitial.txt
+revision1/
+submission_bundle/
+cover_letter*
+Judging_BioComm*
+
+# Internal working notes
+CLAUDE.md
+PAPER_BLUEPRINT.md
+PROJECT_STATUS.md
+
+# Stray scratch text files
+q[0-9]*.txt
+qb.txt
+qstatus.txt
+AuthorGuideBioComm.txt
+BioComm*.txt
+keywords.txt
+I have download the datasets.txt
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Model checkpoints / scratch outputs (kept local; not part of the release)
+*.pt
+*.pth

@@ -1,0 +1,30 @@
+{
+  "spatial_prediction": {
+    "B-Spline Graph KAN": {
+      "mean": 0.023562531173229217,
+      "std": 0.0036316873571683294
+    },
+    "GNN": {
+      "mean": 0.7665946125984192,
+      "std": 0.027420968507041784
+    },
+    "GAT": {
+      "mean": 0.8490549445152282,
+      "std": 0.027607523982253034
+    }
+  },
+  "spectral_radius": 0.9962467700242996,
+  "IT_bound": 2.954399836306666,
+  "MI_achieved": 5.260494521725097,
+  "gene_names": [
+    "MGP",
+    "IGKC",
+    "IGLC2",
+    "COX6C",
+    "IGHG3",
+    "IGHG4",
+    "ALB",
+    "IGLC7"
+  ],
+  "basis_type": "B-spline (Cox-de Boor)"
+}

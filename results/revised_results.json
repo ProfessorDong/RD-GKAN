@@ -1,0 +1,343 @@
+{
+  "spatial": {
+    "spatial_prediction": {
+      "Graph KAN": {
+        "mean": 0.27596117854118346,
+        "std": 0.0072413105610343986,
+        "all_seeds": [
+          0.28902798891067505,
+          0.2677849531173706,
+          0.2736162841320038,
+          0.27187302708625793,
+          0.27750363945961
+        ]
+      },
+      "GNN": {
+        "mean": 0.2757191002368927,
+        "std": 0.008480896319926462,
+        "all_seeds": [
+          0.28839561343193054,
+          0.26724228262901306,
+          0.280258446931839,
+          0.2655063569545746,
+          0.2771928012371063
+        ]
+      },
+      "GAT": {
+        "mean": 0.3047697424888611,
+        "std": 0.007932238118884638,
+        "all_seeds": [
+          0.31583043932914734,
+          0.3092884123325348,
+          0.2946222424507141,
+          0.29685187339782715,
+          0.30725574493408203
+        ]
+      },
+      "GRAND": {
+        "mean": 0.2998543083667755,
+        "std": 0.008846183556387596,
+        "all_seeds": [
+          0.31348440051078796,
+          0.2979333698749542,
+          0.2857498228549957,
+          0.30104556679725647,
+          0.3010583817958832
+        ]
+      },
+      "GREAD": {
+        "mean": 0.291146719455719,
+        "std": 0.006366852705862892,
+        "all_seeds": [
+          0.29700642824172974,
+          0.28378140926361084,
+          0.2894953191280365,
+          0.28543174266815186,
+          0.30001869797706604
+        ]
+      }
+    },
+    "graph_stats": {
+      "N": 500,
+      "n_edges_undirected": 1215,
+      "n_edges_directed": 2430,
+      "avg_degree": 4.86,
+      "min_degree": 0.0,
+      "max_degree": 11.0,
+      "lambda_2": -8.606499347601017e-17,
+      "lambda_N": 1.9734624062327841,
+      "mean_weight": 0.09186854874836575
+    },
+    "gene_names": [
+      "MGP",
+      "IGKC",
+      "IGLC2",
+      "COX6C",
+      "IGHG3",
+      "IGHG4",
+      "ALB",
+      "IGLC1"
+    ],
+    "stability": {
+      "spectral_radius": 1.735539972782135,
+      "certified_stable": false
+    },
+    "symbolic_recovery": {
+      "MGP": {
+        "dominant_basis": "x",
+        "dominant_coeff": 0.27892112731933594,
+        "epsilon_recon_pct": 16.260173797607422,
+        "all_coeffs": {
+          "1": 0.0,
+          "x": 0.27892112731933594,
+          "x^2": 0.02402205392718315,
+          "x^3": -0.01786782220005989,
+          "MM (x/(1+|x|))": 0.0,
+          "Hill_2 (x^2/(1+x^2))": -0.10565599799156189,
+          "exp(-|x|)": 0.0,
+          "log(1+|x|)": -0.0
+        }
+      },
+      "IGKC": {
+        "dominant_basis": "x",
+        "dominant_coeff": 0.1740422546863556,
+        "epsilon_recon_pct": 14.025938034057617,
+        "all_coeffs": {
+          "1": 0.0,
+          "x": 0.1740422546863556,
+          "x^2": 0.01814850978553295,
+          "x^3": -0.007127216551452875,
+          "MM (x/(1+|x|))": 0.0,
+          "Hill_2 (x^2/(1+x^2))": -0.08964227885007858,
+          "exp(-|x|)": 0.0,
+          "log(1+|x|)": -0.0
+        }
+      },
+      "IGLC2": {
+        "dominant_basis": "x",
+        "dominant_coeff": -0.2469145804643631,
+        "epsilon_recon_pct": 10.417696952819824,
+        "all_coeffs": {
+          "1": 0.0,
+          "x": -0.2469145804643631,
+          "x^2": -0.025612419471144676,
+          "x^3": 0.016559071838855743,
+          "MM (x/(1+|x|))": -0.0,
+          "Hill_2 (x^2/(1+x^2))": 0.0,
+          "exp(-|x|)": -0.0,
+          "log(1+|x|)": 0.0
+        }
+      },
+      "COX6C": {
+        "dominant_basis": "x",
+        "dominant_coeff": 0.3336717486381531,
+        "epsilon_recon_pct": 8.838007926940918,
+        "all_coeffs": {
+          "1": 0.0,
+          "x": 0.3336717486381531,
+          "x^2": 0.026732398197054863,
+          "x^3": -0.02039191499352455,
+          "MM (x/(1+|x|))": 0.0,
+          "Hill_2 (x^2/(1+x^2))": -0.016474200412631035,
+          "exp(-|x|)": 0.0,
+          "log(1+|x|)": -0.0
+        }
+      },
+      "IGHG3": {
+        "dominant_basis": "x",
+        "dominant_coeff": -0.25711750984191895,
+        "epsilon_recon_pct": 7.717715740203857,
+        "all_coeffs": {
+          "1": 0.0,
+          "x": -0.25711750984191895,
+          "x^2": -0.016665449365973473,
+          "x^3": 0.01246772613376379,
+          "MM (x/(1+|x|))": -0.0,
+          "Hill_2 (x^2/(1+x^2))": 0.0,
+          "exp(-|x|)": -0.0,
+          "log(1+|x|)": 0.0
+        }
+      },
+      "IGHG4": {
+        "dominant_basis": "x",
+        "dominant_coeff": -0.20133136212825775,
+        "epsilon_recon_pct": 15.526327133178711,
+        "all_coeffs": {
+          "1": 0.0,
+          "x": -0.20133136212825775,
+          "x^2": -0.014174897223711014,
+          "x^3": 0.011957078240811825,
+          "MM (x/(1+|x|))": -0.0,
+          "Hill_2 (x^2/(1+x^2))": 0.09572236239910126,
+          "exp(-|x|)": -0.0,
+          "log(1+|x|)": 0.0
+        }
+      },
+      "ALB": {
+        "dominant_basis": "Hill_2 (x^2/(1+x^2))",
+        "dominant_coeff": 0.37546929717063904,
+        "epsilon_recon_pct": 17.297931671142578,
+        "all_coeffs": {
+          "1": 0.0,
+          "x": -0.25089535117149353,
+          "x^2": -0.03905763849616051,
+          "x^3": 0.016895044595003128,
+          "MM (x/(1+|x|))": -0.0,
+          "Hill_2 (x^2/(1+x^2))": 0.37546929717063904,
+          "exp(-|x|)": -0.0,
+          "log(1+|x|)": 0.0
+        }
+      },
+      "IGLC1": {
+        "dominant_basis": "x",
+        "dominant_coeff": -0.34285637736320496,
+        "epsilon_recon_pct": 9.09221363067627,
+        "all_coeffs": {
+          "1": 0.0,
+          "x": -0.34285637736320496,
+          "x^2": -0.021367186680436134,
+          "x^3": 0.03012426570057869,
+          "MM (x/(1+|x|))": -0.0,
+          "Hill_2 (x^2/(1+x^2))": 0.0,
+          "exp(-|x|)": -0.0,
+          "log(1+|x|)": 0.0
+        }
+      },
+      "_summary": {
+        "dominant_bases": [
+          "x",
+          "x",
+          "x",
+          "x",
+          "x",
+          "x",
+          "Hill_2 (x^2/(1+x^2))",
+          "x"
+        ],
+        "mean_epsilon_recon_pct": 12.3970006108284,
+        "range_epsilon_recon_pct": [
+          7.717715740203857,
+          17.297931671142578
+        ],
+        "metric_definition": "epsilon_recon = ||phi_learned - phi_symbolic||_2 / ||phi_learned||_2 * 100%"
+      }
+    },
+    "it_bound": {
+      "C_bound_bits": 1.4455846508196794e-10,
+      "I_per_link_bits": 0.06907714158296585,
+      "I_multihop_bits": 1.8450618982315063,
+      "per_link_below_bound": false,
+      "multihop_exceeds_link_bound": true,
+      "note": "Per-link MI is bounded by Theorem 3. Multi-hop MI can exceed the single-link bound by aggregating information over multiple graph hops, which is a separate quantity."
+    },
+    "split_method": "region-based (k-means spatial clustering)"
+  },
+  "n_scaling": {
+    "100": {
+      "mean_rmse": 0.2965850631395976,
+      "std_rmse": 0.0034327377906049066,
+      "n_seeds": 3
+    },
+    "200": {
+      "mean_rmse": 0.29420916239420575,
+      "std_rmse": 0.010387833996146997,
+      "n_seeds": 3
+    },
+    "500": {
+      "mean_rmse": 0.28599000970522565,
+      "std_rmse": 0.011799558273837787,
+      "n_seeds": 3
+    },
+    "1000": {
+      "mean_rmse": 0.29097673296928406,
+      "std_rmse": 0.009177836950566468,
+      "n_seeds": 3
+    },
+    "2000": {
+      "mean_rmse": 0.27518584330876666,
+      "std_rmse": 0.0025905685060729883,
+      "n_seeds": 3
+    },
+    "convergence_fit": {
+      "fitted_exponent": 0.021067925543047497,
+      "theoretical_exponent": 1.0,
+      "log_linear_coeffs": [
+        -0.021067925543047497,
+        -1.1140524729398618
+      ]
+    }
+  },
+  "t_scaling": {
+    "50": {
+      "success_rate": 0.0,
+      "mean_eps_sym": 100.00000824963217,
+      "std_eps_sym": 2.3674709839532078e-06
+    },
+    "100": {
+      "success_rate": 0.0,
+      "mean_eps_sym": 100.00000013542895,
+      "std_eps_sym": 1.096354725116732e-07
+    },
+    "200": {
+      "success_rate": 0.0,
+      "mean_eps_sym": 100.00000447874409,
+      "std_eps_sym": 6.474001072687319e-07
+    },
+    "500": {
+      "success_rate": 0.0,
+      "mean_eps_sym": 100.0000026763595,
+      "std_eps_sym": 3.9564322342934285e-07
+    },
+    "1000": {
+      "success_rate": 0.0,
+      "mean_eps_sym": 100.00000153475065,
+      "std_eps_sym": 7.376030441397677e-07
+    },
+    "scaling_fit": {
+      "fitted_exponent": 1.4039208253171189e-08,
+      "note": "epsilon_sym ~ T^{-exponent}"
+    },
+    "ground_truth": {
+      "kinetics": "Hill(n=2)",
+      "V_max": 0.5,
+      "K_d": 1.0,
+      "n": 2.0,
+      "beta": 0.1,
+      "alpha_true": [
+        0.0,
+        -0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "qs": {
+    "hill_fit": {
+      "V_max": 1.0528116005249857,
+      "K_d": 0.17711902556014383,
+      "n": 0.7362114575240746,
+      "R2": 0.928795498372811
+    },
+    "symbolic_recovery": {
+      "dominant_basis": "Hill_2 (x^2/(K^2+x^2), K=0.18)",
+      "coefficients": {
+        "1": 0.0,
+        "x": 0.0,
+        "x^2": 0.006724580706378294,
+        "MM (x/(K+x), K=0.18)": 0.0,
+        "Hill_2 (x^2/(K^2+x^2), K=0.18)": 0.5004033012856326,
+        "Hill_n (x^0.74/(K^0.74+x^0.74))": 0.0,
+        "exp(-x)": -0.0
+      },
+      "epsilon_recon_pct": 35.58393621818427,
+      "metric_definition": "epsilon_recon = ||phi_learned - phi_symbolic||_2 / ||phi_learned||_2 * 100%"
+    },
+    "n_data_points": 11,
+    "n_doses": 11,
+    "note": "Hill coefficient n=0.736 (fitted from data). Library includes Hill basis with fitted n=0.74 alongside canonical n=2."
+  }
+}
