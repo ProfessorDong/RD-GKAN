@@ -1,7 +1,10 @@
 {
-  "n_bit_responses": 8,
-  "n_noise": 12,
-  "noise_mean": -0.00010962901208837012,
-  "noise_std": 0.012899201476715486,
-  "n_cir_estimates": 6
+ "n_bit_responses": 8,
+ "n_noise": 12,
+ "noise_mean": 1.1e-05,
+ "noise_std": 0.0016,
+ "n_cir_estimates": 6,
+ "noise_std_per_record_median": 0.0017,
+ "noise_note": "first-200 samples/record, within-record diff (corrected); approx Gaussian shape (excess kurtosis ~1), quantized at 0.001; prior 0.0129 was a concat-then-diff artifact",
+ "noise_kurtosis_excess": 1.01
 }

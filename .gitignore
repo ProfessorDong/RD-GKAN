@@ -14,6 +14,7 @@ data/
 *.blg
 *.pdf
 *.tex
+*.bib
 *.cls
 *.synctex.gz
 texput.log
@@ -40,6 +41,10 @@ Judging_BioComm*
 CLAUDE.md
 PAPER_BLUEPRINT.md
 PROJECT_STATUS.md
+
+# Scratch directories (IEEE template, draft figure sources — not part of the release)
+IEEE_template/
+nsf_figures/
 
 # Stray scratch text files
 q[0-9]*.txt

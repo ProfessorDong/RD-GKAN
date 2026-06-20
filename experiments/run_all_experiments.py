@@ -469,8 +469,10 @@ def exp2_biological_mc():
     # (b) Noise analysis — validate Poisson noise model
     ax = axes[0, 1]
     if noise_data:
-        all_noise = np.concatenate([n[:200] for n in noise_data if len(n) > 10])
-        noise_diff = np.diff(all_noise)
+        # Within-record increments only: diffing a concatenation would count the
+        # large baseline jumps BETWEEN separate recordings as spurious "noise"
+        # (those 11 cross-record jumps inflate sigma from ~0.001 to 0.0129).
+        noise_diff = np.concatenate([np.diff(n) for n in noise_data if len(n) > 10])
         ax.hist(noise_diff, bins=50, density=True, alpha=0.7, color='steelblue',
                 label='Empirical noise')
         # Fit Gaussian

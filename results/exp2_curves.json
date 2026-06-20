@@ -1,0 +1,15 @@
+{
+ "method": "first-200 pts/record, within-record diff",
+ "n": 2388,
+ "noise_mean": 1.130653266331664e-05,
+ "noise_std": 0.001555329994502737,
+ "kurtosis": 1.0079641559083452,
+ "per_record_std_median": 0.001662521718704004,
+ "per_record_std_range": [
+  0.0007600409069569772,
+  0.0017593968815860545
+ ],
+ "frac_zero": 0.3010887772194305,
+ "quantization": 0.001,
+ "note": "records 11,12 are long slow-drift series; first-200/record equalizes contributions"
+}
