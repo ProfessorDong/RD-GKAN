@@ -1,0 +1,38 @@
+{
+  "breast": {
+    "CrossFeature|leaky": {
+      "mean": 0.26307073831558225,
+      "std": 0.006444494006640216
+    },
+    "CrossFeature|rigorous": {
+      "mean": 0.2704672396183014,
+      "std": 0.009005771083514042
+    },
+    "Constrained|leaky": {
+      "mean": 0.28555387258529663,
+      "std": 0.004464962438439112
+    },
+    "Constrained|rigorous": {
+      "mean": 0.2899784445762634,
+      "std": 0.007424258328326749
+    }
+  },
+  "intestine": {
+    "CrossFeature|leaky": {
+      "mean": 0.25558418929576876,
+      "std": 0.007536847509535143
+    },
+    "CrossFeature|rigorous": {
+      "mean": 0.262734591960907,
+      "std": 0.006723530164481135
+    },
+    "Constrained|leaky": {
+      "mean": 0.28536805510520935,
+      "std": 0.010880611797019463
+    },
+    "Constrained|rigorous": {
+      "mean": 0.2860684633255005,
+      "std": 0.007376709646719587
+    }
+  }
+}
