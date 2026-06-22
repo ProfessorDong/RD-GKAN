@@ -22,7 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 RES = os.path.join(ROOT, 'results'); sys.path.insert(0, HERE)
 from run_synthetic_rd import RD_GKAN, DEVICE
 from run_new_datasets import build_knn_graph, DATA_DIR
-from run_staph_rigorous import train_onestep, persistence, ar1, DiffOnlyT
+from run_staph_rigorous import train_onestep, persistence, ar1, DiffOnlyT, step_pred
 
 N_SEEDS = 5
 
@@ -76,6 +76,26 @@ def load_erk():
     return traj[..., 0], L_norm, W, N, T_total, float(avg_deg)
 
 
+def rollout_rmse(model, traj, L, te_idx):
+    """Autoregressive multi-step rollout from the first test timepoint;
+    mean RMSE over the test horizon (teacher-free)."""
+    Lt = L.to(DEVICE); model.eval()
+    with torch.no_grad():
+        c = torch.tensor(traj[te_idx[0]], dtype=torch.float32).reshape(-1, 1).to(DEVICE)
+        errs = []
+        for k in range(1, len(te_idx)):
+            c = step_pred(model, c, Lt)
+            tgt = torch.tensor(traj[te_idx[k]], dtype=torch.float32).reshape(-1, 1).to(DEVICE)
+            errs.append(torch.sqrt(((c - tgt) ** 2).mean()).item())
+    return float(np.mean(errs))
+
+
+def persistence_rollout(traj, te_idx):
+    """Rollout for persistence = predict the (constant) first test frame."""
+    c0 = traj[te_idx[0]]
+    return float(np.mean([np.sqrt(np.mean((c0 - traj[te_idx[k]]) ** 2)) for k in range(1, len(te_idx))]))
+
+
 def main():
     print(f"Device: {DEVICE}")
     traj, L_norm, W, N, T, deg = load_erk()
@@ -89,17 +109,22 @@ def main():
            'one_step_rmse': {}}
     out['one_step_rmse']['Persistence'] = persistence(traj, te_e)
     out['one_step_rmse']['AR(1)'] = ar1(traj, tr_e, te_e)
+    te_idx = list(range(n_va, T))
     full, self_, shuf, diff, Ds = [], [], [], [], []
+    full_ro, self_ro = [], []
     for s in range(N_SEEDS):
         torch.manual_seed(s); np.random.seed(s)
-        m = RD_GKAN(1, G=8, k=3, x_range=(-4, 4)); full.append(train_onestep(m, traj, L, tr_e, va_e, te_e)); Ds.append(abs(m.D.item()))
-        m = RD_GKAN(1, G=8, k=3, x_range=(-4, 4)); m.D.data.zero_(); m.D.requires_grad_(False); self_.append(train_onestep(m, traj, L, tr_e, va_e, te_e))
+        m = RD_GKAN(1, G=8, k=3, x_range=(-4, 4)); full.append(train_onestep(m, traj, L, tr_e, va_e, te_e)); Ds.append(abs(m.D.item())); full_ro.append(rollout_rmse(m, traj, L, te_idx))
+        m = RD_GKAN(1, G=8, k=3, x_range=(-4, 4)); m.D.data.zero_(); m.D.requires_grad_(False); self_.append(train_onestep(m, traj, L, tr_e, va_e, te_e)); self_ro.append(rollout_rmse(m, traj, L, te_idx))
         perm = np.random.permutation(N); Ws = W[perm][:, perm]; Ls = torch.tensor((np.diag(Ws.sum(1)) - Ws) / N, dtype=torch.float32)
         m = RD_GKAN(1, G=8, k=3, x_range=(-4, 4)); shuf.append(train_onestep(m, traj, Ls, tr_e, va_e, te_e))
         diff.append(train_onestep(DiffOnlyT(), traj, L, tr_e, va_e, te_e, l1=0))
     for nm, v in [('Full', full), ('Self-only', self_), ('Shuffled', shuf), ('Diff-only', diff)]:
         out['one_step_rmse'][nm] = {'mean': float(np.mean(v)), 'std': float(np.std(v))}
     out['D_theta'] = float(np.mean(Ds))
+    out['rollout_rmse'] = {'Persistence': persistence_rollout(traj, te_idx),
+                           'Self-only': {'mean': float(np.mean(self_ro)), 'std': float(np.std(self_ro))},
+                           'Full': {'mean': float(np.mean(full_ro)), 'std': float(np.std(full_ro))}}
     with open(os.path.join(RES, 'erk_rigorous.json'), 'w') as f:
         json.dump(out, f, indent=2)
     print("\n=== ERK one-step RMSE (60/10/30, val-based; lower=better) ===")
@@ -107,6 +132,9 @@ def main():
         print(f"  {k:<12} {v if isinstance(v, float) else v['mean']:.4f}"
               + ("" if isinstance(v, float) else f" +/- {v['std']:.4f}"))
     print(f"  D_theta(mean) = {out['D_theta']:.4f}")
+    print("=== rollout RMSE (autoregressive over test horizon) ===")
+    rr = out['rollout_rmse']
+    print(f"  Persistence {rr['Persistence']:.4f} | Self-only {rr['Self-only']['mean']:.4f} | Full {rr['Full']['mean']:.4f}")
     print("saved results/erk_rigorous.json")
 
 
