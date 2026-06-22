@@ -1,0 +1,29 @@
+{
+  "dataset": "ERK MDCK waves",
+  "N": 167,
+  "T_total": 100,
+  "avg_degree": 5.18,
+  "n_seeds": 5,
+  "split": "60/10/30 chronological (validation-based early stopping)",
+  "one_step_rmse": {
+    "Persistence": 0.09008457511663437,
+    "AR(1)": 0.08992604911327362,
+    "Full": {
+      "mean": 0.09020963907241822,
+      "std": 0.00012772674329181188
+    },
+    "Self-only": {
+      "mean": 0.08999774754047393,
+      "std": 0.0001091405311398508
+    },
+    "Shuffled": {
+      "mean": 0.09017055332660676,
+      "std": 0.00013844055960189307
+    },
+    "Diff-only": {
+      "mean": 0.08996739238500595,
+      "std": 0.0
+    }
+  },
+  "D_theta": 0.1652126595377922
+}
