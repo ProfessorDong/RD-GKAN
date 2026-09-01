@@ -1,0 +1,181 @@
+{
+  "_meta": {
+    "source": "verbatim re-run of experiment_t_scaling() in run_synthetic_rd.py",
+    "reason": "the original synthetic_results.json was not on disk at camera-ready",
+    "T_values": [
+      20,
+      50,
+      100,
+      200,
+      500,
+      1000
+    ],
+    "N": 200,
+    "n_seeds": 5,
+    "G": 10,
+    "kinetics": {
+      "linear": "f=-0.1c",
+      "hill": "f=c^2/(1+c^2)-0.3c",
+      "michaelis_menten": "f=c/(0.5+c)-0.2c"
+    },
+    "scripts": [
+      "run_t_scaling_verify.py",
+      "run_t_scaling_hill.py",
+      "run_t_scaling_rest.py",
+      "merge_t_scaling.py"
+    ]
+  },
+  "linear": {
+    "20": {
+      "mean_eps_sym": 73.46270848029819,
+      "std_eps_sym": 12.954040966588263,
+      "support_recovery_rate": 0.2,
+      "support_correct_count": 1
+    },
+    "50": {
+      "mean_eps_sym": 85.92408374021862,
+      "std_eps_sym": 30.738341190808892,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "100": {
+      "mean_eps_sym": 80.50730587342461,
+      "std_eps_sym": 40.20514210992511,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "200": {
+      "mean_eps_sym": 61.25984203289859,
+      "std_eps_sym": 30.59090234665896,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "500": {
+      "mean_eps_sym": 75.16689634281695,
+      "std_eps_sym": 46.44723943332058,
+      "support_recovery_rate": 0.2,
+      "support_correct_count": 1
+    },
+    "1000": {
+      "mean_eps_sym": 84.47610699170188,
+      "std_eps_sym": 18.8112334757126,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "_summary": {
+      "rates_by_T": {
+        "20": 0.2,
+        "50": 0.0,
+        "100": 0.0,
+        "200": 0.0,
+        "500": 0.2,
+        "1000": 0.0
+      },
+      "min": 0.0,
+      "max": 0.2,
+      "mean": 0.06666666666666667
+    }
+  },
+  "hill": {
+    "20": {
+      "mean_eps_sym": 78.94750408326883,
+      "std_eps_sym": 3.026633307299417,
+      "support_recovery_rate": 0.2,
+      "support_correct_count": 1
+    },
+    "50": {
+      "mean_eps_sym": 84.98518538643509,
+      "std_eps_sym": 4.7251900232750215,
+      "support_recovery_rate": 0.6,
+      "support_correct_count": 3
+    },
+    "100": {
+      "mean_eps_sym": 86.14844791729949,
+      "std_eps_sym": 5.230288912708639,
+      "support_recovery_rate": 0.6,
+      "support_correct_count": 3
+    },
+    "200": {
+      "mean_eps_sym": 89.72893164352861,
+      "std_eps_sym": 10.46930769379261,
+      "support_recovery_rate": 0.6,
+      "support_correct_count": 3
+    },
+    "500": {
+      "mean_eps_sym": 82.65545616157739,
+      "std_eps_sym": 6.429254230278851,
+      "support_recovery_rate": 0.4,
+      "support_correct_count": 2
+    },
+    "1000": {
+      "mean_eps_sym": 80.68967819014907,
+      "std_eps_sym": 9.675164833149633,
+      "support_recovery_rate": 0.4,
+      "support_correct_count": 2
+    },
+    "_summary": {
+      "rates_by_T": {
+        "20": 0.2,
+        "50": 0.6,
+        "100": 0.6,
+        "200": 0.6,
+        "500": 0.4,
+        "1000": 0.4
+      },
+      "min": 0.2,
+      "max": 0.6,
+      "mean": 0.4666666666666666
+    }
+  },
+  "michaelis_menten": {
+    "20": {
+      "mean_eps_sym": 196.92958921137165,
+      "std_eps_sym": 3.7286771762650868,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "50": {
+      "mean_eps_sym": 197.07090762675625,
+      "std_eps_sym": 8.11118872298389,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "100": {
+      "mean_eps_sym": 205.02860228239678,
+      "std_eps_sym": 4.90234570341213,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "200": {
+      "mean_eps_sym": 213.1003878135128,
+      "std_eps_sym": 8.987055526954633,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "500": {
+      "mean_eps_sym": 220.9438265782845,
+      "std_eps_sym": 19.903610223129327,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "1000": {
+      "mean_eps_sym": 191.36519915131095,
+      "std_eps_sym": 26.24523579452278,
+      "support_recovery_rate": 0.0,
+      "support_correct_count": 0
+    },
+    "_summary": {
+      "rates_by_T": {
+        "20": 0.0,
+        "50": 0.0,
+        "100": 0.0,
+        "200": 0.0,
+        "500": 0.0,
+        "1000": 0.0
+      },
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0
+    }
+  }
+}

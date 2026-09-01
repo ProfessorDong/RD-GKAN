@@ -1,0 +1,163 @@
+{
+ "description": "S. aureus one-step controls rescored on transitions whose endpoints are both directly observed (no interpolation). 3 seeds; mean-of-per-transition-RMSE aggregation preserved.",
+ "mean_observed_endpoint_fraction": 0.70102342810121,
+ "all_transitions": {
+  "full_beats_self": 5,
+  "full_beats_persistence": 0
+ },
+ "observed_endpoint_only": {
+  "full_beats_self": 6,
+  "full_beats_persistence": 0
+ },
+ "non_degenerate_7": {
+  "full_beats_self_all": 1,
+  "full_beats_self_masked": 2,
+  "full_beats_persistence_all": 0,
+  "full_beats_persistence_masked": 0
+ },
+ "per_experiment": {
+  "s06": {
+   "N": 11,
+   "T": 224,
+   "mask_frac": 0.49796472184531887,
+   "Full_all": 0.003352304299672445,
+   "Full_masked": 0.003352304299672445,
+   "Self_all": 0.0026483635107676187,
+   "Self_masked": 0.0026483635264054977,
+   "Pers_all": 0.0,
+   "Pers_masked": 0.0
+  },
+  "s08": {
+   "N": 8,
+   "T": 279,
+   "mask_frac": 0.6219879518072289,
+   "Full_all": 0.0013843178749084473,
+   "Full_masked": 0.0013843178749084473,
+   "Self_all": 0.0016943116400701304,
+   "Self_masked": 0.0016943116982777913,
+   "Pers_all": 0.0,
+   "Pers_masked": 0.0
+  },
+  "s10": {
+   "N": 6,
+   "T": 282,
+   "mask_frac": 0.5734126984126984,
+   "Full_all": 0.019040970131754875,
+   "Full_masked": 0.024062575175256434,
+   "Self_all": 0.01861579033235709,
+   "Self_masked": 0.023972589209387524,
+   "Pers_all": 0.016785910353064537,
+   "Pers_masked": 0.022576238960027695
+  },
+  "s14": {
+   "N": 4,
+   "T": 134,
+   "mask_frac": 0.7375,
+   "Full_all": 0.024590278665224712,
+   "Full_masked": 0.021453470469714377,
+   "Self_all": 0.024907248094677925,
+   "Self_masked": 0.02151437867044782,
+   "Pers_all": 0.02400868758559227,
+   "Pers_masked": 0.020582986995577812
+  },
+  "s15": {
+   "N": 6,
+   "T": 189,
+   "mask_frac": 0.8065476190476191,
+   "Full_all": 0.04153365145126978,
+   "Full_masked": 0.0436942530899874,
+   "Self_all": 0.041439191748698555,
+   "Self_masked": 0.04390439421903076,
+   "Pers_all": 0.036893874406814575,
+   "Pers_masked": 0.039259109646081924
+  },
+  "s24": {
+   "N": 7,
+   "T": 216,
+   "mask_frac": 0.5758928571428571,
+   "Full_all": 0.004030625025431315,
+   "Full_masked": 0.004030625025431315,
+   "Self_all": 0.00204853224568069,
+   "Self_masked": 0.00204853222068757,
+   "Pers_all": 0.0,
+   "Pers_masked": 0.0
+  },
+  "s26": {
+   "N": 4,
+   "T": 708,
+   "mask_frac": 0.6084905660377359,
+   "Full_all": 0.0002140495926141739,
+   "Full_masked": 0.0002140495895710847,
+   "Self_all": 0.00021781890730684003,
+   "Self_masked": 0.00021781890730684003,
+   "Pers_all": 0.0,
+   "Pers_masked": 0.0
+  },
+  "s27": {
+   "N": 8,
+   "T": 526,
+   "mask_frac": 0.9570063694267515,
+   "Full_all": 0.000821081300576528,
+   "Full_masked": 0.0008210813139235074,
+   "Self_all": 0.005119905186196168,
+   "Self_masked": 0.005119904880760427,
+   "Pers_all": 0.0,
+   "Pers_masked": 0.0
+  },
+  "s28": {
+   "N": 5,
+   "T": 514,
+   "mask_frac": 0.6493506493506493,
+   "Full_all": 0.0002117156982421875,
+   "Full_masked": 0.0002117156982421875,
+   "Self_all": 0.0004108746846516927,
+   "Self_masked": 0.0004108746846516927,
+   "Pers_all": 0.0,
+   "Pers_masked": 0.0
+  },
+  "s34": {
+   "N": 6,
+   "T": 204,
+   "mask_frac": 0.7459016393442623,
+   "Full_all": 0.07572910189628601,
+   "Full_masked": 0.07092989300749178,
+   "Self_all": 0.0681255633632342,
+   "Self_masked": 0.062284141528303104,
+   "Pers_all": 0.0662975162267685,
+   "Pers_masked": 0.06052751466631889
+  },
+  "s36": {
+   "N": 5,
+   "T": 194,
+   "mask_frac": 0.7068965517241379,
+   "Full_all": 0.05326419323682785,
+   "Full_masked": 0.05490495829880452,
+   "Self_all": 0.050257232040166855,
+   "Self_masked": 0.05210827196942878,
+   "Pers_all": 0.04525887593626976,
+   "Pers_masked": 0.04717234894633293
+  },
+  "s37": {
+   "N": 7,
+   "T": 229,
+   "mask_frac": 0.6323529411764706,
+   "Full_all": 0.02549712359905243,
+   "Full_masked": 0.029285039223146205,
+   "Self_all": 0.020500613376498222,
+   "Self_masked": 0.025127117211620014,
+   "Pers_all": 0.016602689400315285,
+   "Pers_masked": 0.02156970463693142
+  },
+  "s38": {
+   "N": 10,
+   "T": 292,
+   "mask_frac": 1.0,
+   "Full_all": 0.023995705569783848,
+   "Full_masked": 0.023995706017603702,
+   "Self_all": 0.0236774484316508,
+   "Self_masked": 0.023677447829502582,
+   "Pers_all": 0.020183702930808067,
+   "Pers_masked": 0.020183702930808067
+  }
+ }
+}

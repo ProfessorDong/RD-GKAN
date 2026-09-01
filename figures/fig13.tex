@@ -1,0 +1,130 @@
+\documentclass[lettersize,journal]{IEEEtran}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{balance}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,
+  shapes.geometric,fit,backgrounds,patterns,fadings,shadows.blur}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\hyphenation{op-tical net-works semi-conduc-tor Kolmo-go-rov}
+
+% ============================================================
+% THEOREM ENVIRONMENTS
+% ============================================================
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\DeclareMathOperator{\erfc}{erfc}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+% ============================================================
+\usepackage[active,tightpage]{preview}
+\setlength\PreviewBorder{0.6pt}
+\begin{document}
+\begin{preview}
+\begin{tikzpicture}
+% Panel (a): Noise histogram
+\begin{axis}[
+  name=noiseplot,
+  width=0.52\columnwidth, height=4.2cm,
+  xlabel={pH increment}, ylabel={Density},
+  xmin=-0.0075, xmax=0.0078,
+  ymin=0, ymax=340,
+  scaled x ticks=false, xtick={-0.005,0,0.005},
+  x tick label style={/pgf/number format/fixed, /pgf/number format/precision=3},
+  grid=major, grid style={gray!20},
+  legend style={font=\tiny, at={(0.97,0.97)}, anchor=north east, fill=white, fill opacity=0.5, draw=gray!30, text opacity=1},
+  tick label style={font=\scriptsize},
+  label style={font=\scriptsize},
+  title style={font=\small},
+  title={(a) Noise increments},
+  ybar, bar width=4.5pt,
+]
+% Real within-record pH-increment density (12 noise records, first 200 samples each; quantized at 0.001)
+\addplot[fill=blue!30, draw=blue!50, forget plot] coordinates {
+  (-0.006,1) (-0.005,3) (-0.004,10) (-0.003,34) (-0.002,100) (-0.001,196)
+  (0.000,301) (0.001,212) (0.002,91) (0.003,38) (0.004,7) (0.005,5)
+  (0.006,2) (0.007,0.4)
+};
+% Moment-matched Gaussian (sigma=0.0016)
+\addplot[red, thick, smooth, no markers] coordinates {
+  (-0.0060,0) (-0.0054,1) (-0.0051,1) (-0.0048,2) (-0.0045,4) (-0.0042,7)
+  (-0.0039,11) (-0.0036,17) (-0.0033,27) (-0.0030,39) (-0.0027,56) (-0.0024,77)
+  (-0.0021,102) (-0.0018,130) (-0.0015,160) (-0.0012,189) (-0.0009,216) (-0.0006,237)
+  (-0.0003,251) (0.0000,256) (0.0003,252) (0.0006,239) (0.0009,218) (0.0012,192)
+  (0.0015,162) (0.0018,132) (0.0021,104) (0.0024,79) (0.0027,58) (0.0030,40)
+  (0.0033,27) (0.0036,18) (0.0039,11) (0.0042,7) (0.0045,4) (0.0048,2) (0.0051,1) (0.0060,0)
+};
+\addlegendentry{$\mathcal{N}(0,\sigma^2)$, $\sigma{=}0.0016$}
+\end{axis}
+
+% Panel (b): ISI example
+\begin{axis}[
+  at={(noiseplot.east)}, anchor=west, xshift=40pt,
+  width=0.52\columnwidth, height=4.2cm,
+  xlabel={Time (s)}, ylabel={pH},
+  xmin=0, xmax=680,
+  ymin=5.830, ymax=5.872,
+  ytick={5.84,5.85,5.86},
+  grid=major, grid style={gray!20},
+  legend style={font=\scriptsize, at={(0.97,0.97)}, anchor=north east, fill=white, fill opacity=0.5, draw=gray!30, text opacity=1},
+  tick label style={font=\scriptsize},
+  label style={font=\scriptsize},
+  title style={font=\small},
+  title={(b) ISI in biological MC},
+]
+% Light-on intervals (shaded) — real illumination from bit sequence
+\fill[orange!18] (axis cs:31,5.830) rectangle (axis cs:61,5.872);
+\fill[orange!18] (axis cs:391,5.830) rectangle (axis cs:421,5.872);
+\fill[orange!18] (axis cs:511,5.830) rectangle (axis cs:541,5.872);
+% Real measured pH (Experiment 3 bit-response, 1769--2450 s window)
+\addplot[blue, thick, no markers] coordinates {
+  (0,5.861) (16,5.864) (31,5.863) (47,5.859) (62,5.850) (78,5.848) (94,5.850)
+  (110,5.850) (126,5.852) (142,5.851) (158,5.851) (174,5.851) (190,5.853)
+  (206,5.852) (222,5.853) (238,5.854) (254,5.855) (270,5.852) (286,5.856)
+  (302,5.854) (318,5.853) (334,5.855) (350,5.856) (366,5.856) (382,5.856)
+  (397,5.856) (413,5.849) (428,5.843) (444,5.844) (460,5.846) (476,5.844)
+  (492,5.845) (508,5.848) (523,5.847) (539,5.840) (554,5.833) (570,5.838)
+  (586,5.837) (602,5.839) (618,5.839) (634,5.840) (650,5.841) (666,5.844)
+};
+\addlegendentry{pH (received)}
+\addlegendimage{area legend, fill=orange!18}
+\addlegendentry{light on}
+% slow relaxation (ISI) annotation — two-line label in the empty lower-left band
+\node[font=\footnotesize, text=black!70, align=center] at (axis cs:225,5.838) {slow\\relaxation};
+\draw[->, thick, black!60] (axis cs:350,5.840) -- (axis cs:428,5.844);
+\end{axis}
+\end{tikzpicture}
+\end{preview}
+\end{document}

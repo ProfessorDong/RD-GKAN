@@ -1,0 +1,90 @@
+\documentclass[lettersize,journal]{IEEEtran}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{balance}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,
+  shapes.geometric,fit,backgrounds,patterns,fadings,shadows.blur}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\hyphenation{op-tical net-works semi-conduc-tor Kolmo-go-rov}
+
+% ============================================================
+% THEOREM ENVIRONMENTS
+% ============================================================
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\DeclareMathOperator{\erfc}{erfc}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+% ============================================================
+\usepackage[active,tightpage]{preview}
+\setlength\PreviewBorder{0.6pt}
+\begin{document}
+\begin{preview}
+\begin{tikzpicture}
+\begin{axis}[
+  width=\columnwidth, height=5.4cm,
+  ybar, bar width=13pt,
+  every axis plot/.append style={bar shift=0pt},
+  ylabel={$\epsilon_{\mathrm{recon}}$ (\%)},
+  ymin=0, ymax=74, xmin=-0.7, xmax=5.7,
+  xtick={0,1,2,3,4,5},
+  xticklabels={linear, MM, Hill, hi-freq, bump, bimodal},
+  x tick label style={font=\footnotesize, rotate=25, anchor=east},
+  ytick={0,20,40,60},
+  grid=major, grid style={gray!20},
+  tick label style={font=\footnotesize}, label style={font=\normalsize},
+  legend style={font=\footnotesize, at={(0.46,0.98)}, anchor=north, draw=gray!30, fill=white, fill opacity=0.9, text opacity=1},
+]
+\fill[red!8] (axis cs:-0.7,33) rectangle (axis cs:5.7,74);
+\draw[red!50, densely dashed] (axis cs:-0.7,33) -- (axis cs:5.7,33);
+\node[font=\footnotesize, text=red!60!black, anchor=north west] at (axis cs:-0.6,73) {reject region};
+\addplot+[ybar, fill=blue!45, draw=blue!70, error bars/.cd, y dir=both, y explicit]
+  coordinates {(0,3.9)+-(0,0.7) (1,7.0)+-(0,1.2) (2,29.1)+-(0,3.4)};
+\addlegendentry{in-library}
+\addplot+[ybar, fill=orange!60, draw=orange!80, error bars/.cd, y dir=both, y explicit]
+  coordinates {(4,64.4)+-(0,0.3) (5,37.8)+-(0,1.6)};
+\addlegendentry{out-of-lib.\ (resolved)}
+\addplot+[ybar, fill=red!45, draw=red!70, error bars/.cd, y dir=both, y explicit]
+  coordinates {(3,5.9)+-(0,1.8)};
+\addlegendentry{out-of-lib.\ (sub-grid)}
+\addplot[only marks, mark=*, mark size=0.9pt, draw=black!75, fill=black!75, forget plot]
+  coordinates {(0,3.19) (0,4.83) (0,3.56) (1,5.91) (1,6.39) (1,8.77) (2,25.89) (2,27.68) (2,33.76) (3,7.33) (3,7.08) (3,3.31) (4,64.01) (4,64.66) (4,64.38) (5,39.5) (5,35.61) (5,38.17)};
+\draw[->, gray!70, thick] (axis cs:3,22) -- (axis cs:3,9);
+\node[font=\scriptsize, text=gray!70, align=center, anchor=south] at (axis cs:3,22) {smoothed:\\not flagged};
+\end{axis}
+\end{tikzpicture}
+\end{preview}
+\end{document}

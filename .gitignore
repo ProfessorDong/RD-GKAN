@@ -14,6 +14,7 @@ data/
 *.blg
 *.pdf
 *.tex
+!figures/*.tex
 *.bib
 *.cls
 *.synctex.gz
@@ -29,6 +30,9 @@ texput.log
 *.docx
 
 # Confidential peer-review material — DO NOT publish
+CameraReady/
+Editor_Memo.md
+TMBMC_audit_*.md
 RESPONSE_TO_REVIEWERS.md
 Reviewer*.pdf
 DecisionletterInitial.txt
@@ -59,6 +63,11 @@ I have download the datasets.txt
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Intermediate per-job outputs of the T-scaling re-run (superseded by the merged
+# results/t_scaling_verify.json, which contains the full 3 x 6 grid)
+results/t_scaling_verify_hill.json
+results/t_scaling_verify_rest.json
 
 # Model checkpoints / scratch outputs (kept local; not part of the release)
 *.pt

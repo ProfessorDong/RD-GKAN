@@ -4,7 +4,7 @@ Code and derived results for the paper
 
 > **Interpretable Reaction–Diffusion Learning for Molecular Communication via Graph Kolmogorov–Arnold Networks**
 > Liang Dong, Baylor University / UT Southwestern.
-> IEEE Transactions on Molecular, Biological, and Multi-Scale Communications (under review).
+> IEEE Transactions on Molecular, Biological, and Multi-Scale Communications (accepted, 2026).
 
 RD-GKAN is a graph learning architecture whose forward pass is constrained to implement
 reaction–diffusion dynamics: a feature-wise B-spline (Kolmogorov–Arnold) function captures
@@ -18,6 +18,7 @@ the kinetics class, with a reconstruction-error criterion that rejects out-of-li
 |------|-------------|
 | `experiments/` | All experiment code (PyTorch). |
 | `results/` | Derived results as JSON (the numbers behind the paper's tables/figures). |
+| `figures/` | Standalone TikZ/pgfplots sources for Figures 1-15. |
 | `DATA.md` | Public dataset accessions and download instructions. |
 | `requirements.txt` | Python dependencies. |
 
@@ -35,6 +36,15 @@ original providers); see [`DATA.md`](DATA.md) to obtain them and place them unde
 - `run_wound_rmse.py` — wound-healing reconstruction RMSE (constrained RD-GKAN vs. controls).
 - `run_option_b.py`, `run_revised_experiments.py` — spatial transcriptomics, masking, baselines
   (GNN, GAT, GRAND, GREAD).
+- `run_spatial_rigorous.py`, `run_wound_ablation_rigorous.py`, `run_erk_rigorous.py`,
+  `run_staph_rigorous.py` — leakage-controlled re-runs (three-way region splits, inductive
+  message passing, validation-based selection, test read once).
+- `run_t_scaling_verify.py`, `run_t_scaling_hill.py`, `run_t_scaling_rest.py`,
+  `merge_t_scaling.py` — symbolic support-recovery rates versus the number of snapshots `T`,
+  merged into `results/t_scaling_verify.json`.
+- `run_staph_masked_rescore.py` — *S. aureus* controls rescored on transitions whose endpoints
+  are both directly observed.
+- `run_h_scaling_fp64.py` — forward-Euler vs. RK4 discretization scaling in double precision.
 
 ## Setup
 
@@ -64,7 +74,19 @@ Health (NIH) under Grant R01CA309499.
 
 ## Citation
 
-Please cite the paper once published. A BibTeX entry will be added here upon acceptance.
+The paper has been accepted by IEEE TMBMC; a full BibTeX entry with volume and pages will be
+added once the issue is published.
+
+```bibtex
+@article{Dong2026RDGKAN,
+  author  = {Liang Dong},
+  title   = {Interpretable Reaction--Diffusion Learning for Molecular Communication
+             via Graph {K}olmogorov--{A}rnold Networks},
+  journal = {IEEE Trans. Molecular, Biological, and Multi-Scale Communications},
+  year    = {2026},
+  note    = {Accepted for publication}
+}
+```
 
 ## License
 

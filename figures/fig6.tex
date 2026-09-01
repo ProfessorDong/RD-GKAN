@@ -1,0 +1,82 @@
+\documentclass[lettersize,journal]{IEEEtran}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{balance}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,
+  shapes.geometric,fit,backgrounds,patterns,fadings,shadows.blur}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\hyphenation{op-tical net-works semi-conduc-tor Kolmo-go-rov}
+
+% ============================================================
+% THEOREM ENVIRONMENTS
+% ============================================================
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\DeclareMathOperator{\erfc}{erfc}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+% ============================================================
+\usepackage[active,tightpage]{preview}
+\setlength\PreviewBorder{0.6pt}
+\begin{document}
+\begin{preview}
+\begin{tikzpicture}
+\begin{axis}[
+  width=\columnwidth, height=5.2cm,
+  xlabel={Integration step $h'$}, ylabel={Final-time rollout RMSE},
+  xmode=log, xmin=0.0042, xmax=0.052,
+  ymin=0, ymax=0.37,
+  xtick={0.005,0.01,0.02,0.04}, xticklabels={0.005,0.01,0.02,0.04},
+  log ticks with fixed point,
+  grid=major, grid style={gray!20},
+  legend style={font=\footnotesize, at={(0.5,1.02)}, anchor=south,
+    legend columns=3, /tikz/every even column/.append style={column sep=5pt},
+    draw=gray!30},
+  tick label style={font=\scriptsize}, label style={font=\small},
+  mark size=2.2pt,
+]
+\addplot[red!80!black,thick,mark=*,dashed] coordinates {(0.005,0.3224)(0.01,0.0716)(0.02,0.1853)(0.04,0.2595)};
+\addlegendentry{naive (no rescale)}
+\addplot[blue,very thick,mark=square*] coordinates {(0.005,0.0716)(0.01,0.0716)(0.02,0.0716)(0.04,0.0716)};
+\addlegendentry{rescaled}
+\addplot[teal,thick,mark=triangle*,dotted] coordinates {(0.005,0.1077)(0.01,0.0568)(0.02,0.0391)(0.04,0.0315)};
+\addlegendentry{retrained (oracle)}
+\draw[gray!60,dashed] (axis cs:0.01,0)--(axis cs:0.01,0.30);
+\node[font=\small,text=gray!70,anchor=south] at (axis cs:0.01,0.30) {$h_{\mathrm{train}}$};
+\end{axis}
+\end{tikzpicture}
+\end{preview}
+\end{document}

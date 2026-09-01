@@ -1,0 +1,104 @@
+\documentclass[lettersize,journal]{IEEEtran}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{balance}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,
+  shapes.geometric,fit,backgrounds,patterns,fadings,shadows.blur}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\hyphenation{op-tical net-works semi-conduc-tor Kolmo-go-rov}
+
+% ============================================================
+% THEOREM ENVIRONMENTS
+% ============================================================
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\DeclareMathOperator{\erfc}{erfc}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+% ============================================================
+\usepackage[active,tightpage]{preview}
+\setlength\PreviewBorder{0.6pt}
+\begin{document}
+\begin{preview}
+\begin{tikzpicture}
+\begin{axis}[
+  width=\columnwidth, height=5.0cm,
+  ybar,
+  bar width=8pt,
+  xlabel={},
+  ylabel={Test RMSE},
+  ymin=0, ymax=1.25,
+  xmin=-0.8, xmax=4.3,
+  xtick={0, 1, 2.5, 3.5},
+  xticklabels={Breast, Intestine, Breast, Intestine},
+  grid=major, grid style={gray!20},
+  tick label style={font=\small},
+  label style={font=\small},
+  legend style={font=\scriptsize, at={(0.03,0.60)}, anchor=west,
+    fill=white, fill opacity=0.8, draw=gray!30, text opacity=1},
+  nodes near coords,
+  nodes near coords style={font=\tiny, anchor=south, rotate=45},
+  every node near coord/.append style={yshift=1pt},
+]
+% Unmasked
+\addplot[fill=blue!50, draw=blue!70, error bars/.cd, y dir=both, y explicit]
+  coordinates {(0, 0.288) +- (0, 0.004) (1, 0.286) +- (0, 0.008)};
+\addlegendentry{RD-GKAN}
+\addplot[fill=orange!40, draw=orange!60, error bars/.cd, y dir=both, y explicit]
+  coordinates {(0, 0.288) +- (0, 0.008) (1, 0.273) +- (0, 0.010)};
+\addlegendentry{GNN}
+\addplot[fill=green!30, draw=green!50, error bars/.cd, y dir=both, y explicit]
+  coordinates {(0, 0.308) +- (0, 0.006) (1, 0.306) +- (0, 0.011)};
+\addlegendentry{GAT}
+% Masked
+\addplot[fill=blue!50, draw=blue!70, pattern=north east lines, pattern color=blue!30,
+  error bars/.cd, y dir=both, y explicit]
+  coordinates {(2.5, 0.954) +- (0, 0.033) (3.5, 0.994) +- (0, 0.042)};
+\addplot[fill=orange!40, draw=orange!60, pattern=north east lines, pattern color=orange!30,
+  error bars/.cd, y dir=both, y explicit]
+  coordinates {(2.5, 0.960) +- (0, 0.043) (3.5, 1.010) +- (0, 0.043)};
+\addplot[fill=green!30, draw=green!50, pattern=north east lines, pattern color=green!30,
+  error bars/.cd, y dir=both, y explicit]
+  coordinates {(2.5, 0.960) +- (0, 0.041) (3.5, 0.991) +- (0, 0.044)};
+% Labels
+\node[font=\small\bfseries] at (axis cs:0.5, 1.15) {Full input};
+\node[font=\small\bfseries] at (axis cs:3.0, 1.15) {All expression zeroed};
+% Divider
+\draw[black!30, dashed, line width=0.5pt] (axis cs:1.75, 0) -- (axis cs:1.75, 1.1);
+\end{axis}
+\end{tikzpicture}
+\end{preview}
+\end{document}

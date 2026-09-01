@@ -1,0 +1,260 @@
+\documentclass[lettersize,journal]{IEEEtran}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{balance}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,
+  shapes.geometric,fit,backgrounds,patterns,fadings,shadows.blur}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\hyphenation{op-tical net-works semi-conduc-tor Kolmo-go-rov}
+
+% ============================================================
+% THEOREM ENVIRONMENTS
+% ============================================================
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\DeclareMathOperator{\erfc}{erfc}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+% ============================================================
+\usepackage[active,tightpage]{preview}
+\setlength\PreviewBorder{0.6pt}
+\begin{document}
+\begin{preview}
+\resizebox{0.8\textwidth}{!}{%
+\begin{tikzpicture}[
+  node distance=6pt and 8pt,
+  cell/.style={circle, draw=black!70, fill=blue!15, minimum size=13pt,
+               inner sep=0pt, font=\tiny\bfseries},
+  kanbox/.style={rectangle, rounded corners=2pt, draw=#1!70, fill=#1!8,
+                 minimum height=28pt, minimum width=14pt,
+                 line width=0.6pt},
+  kanbox/.default={violet},
+  phibox/.style={rectangle, rounded corners=2pt, draw=teal!70, fill=teal!6,
+                 minimum height=18pt, minimum width=8pt,
+                 line width=0.5pt},
+  sumcirc/.style={circle, draw=black!60, fill=yellow!10, minimum size=11pt,
+                  inner sep=0pt, font=\scriptsize},
+  arr/.style={-{Stealth[length=3.5pt,width=2.5pt]}, line width=0.6pt, black!65},
+  darr/.style={-{Stealth[length=3.5pt,width=2.5pt]}, line width=0.8pt,
+               blue!60!black},
+  lbl/.style={font=\scriptsize, text=black!80},
+  tlbl/.style={font=\tiny, text=black!60},
+  phase/.style={rectangle, rounded corners=4pt, draw=black!50,
+                fill=#1, minimum height=22pt, font=\scriptsize\bfseries,
+                align=center, line width=0.6pt},
+  phase/.default={gray!8},
+]
+
+% ============================================================
+% LEFT: Graph input
+% ============================================================
+\begin{scope}[shift={(0,0)}]
+  \node[lbl, font=\small\bfseries, anchor=south] at (1.0,4.1) {Input graph};
+
+  % Small graph
+  \coordinate (g1) at (0.2, 3.2);
+  \coordinate (g2) at (1.0, 3.6);
+  \coordinate (g3) at (0.4, 2.2);
+  \coordinate (g4) at (1.7, 2.8);
+  \coordinate (g5) at (1.3, 1.7);
+
+  \draw[gray!40, line width=0.7pt] (g1)--(g2) (g1)--(g3) (g2)--(g4)
+       (g3)--(g5) (g4)--(g5) (g2)--(g3);
+
+  \node[cell] at (g1) {$1$};
+  \node[cell, fill=blue!30] at (g2) {$i$};
+  \node[cell] at (g3) {$3$};
+  \node[cell, fill=red!15] at (g4) {$j$};
+  \node[cell] at (g5) {$5$};
+
+  % Feature vectors
+  \node[lbl, anchor=west] at (0.15, 1.05) {$\mathbf{h}_i^{(0)} = \mathbf{c}_i(t)$};
+\end{scope}
+
+% ============================================================
+% CENTER: RD-GKAN layer (eq. 11)
+% ============================================================
+% Layer l
+\begin{scope}[shift={(3.0,0)}]
+  \node[lbl, font=\small\bfseries, anchor=south] at (1.3,4.1)
+       {RD-GKAN Layer $l$};
+
+  % Message splines (from neighbors)
+  \node[lbl, anchor=south] at (-0.15, 3.55) {from $j$};
+
+  % KAN spline box — message
+  \node[kanbox=teal, minimum width=42pt, minimum height=60pt]
+       (msgkan) at (1.1, 2.7) {};
+  % Fixed MC-derived coupling: no learned nonlinearity on neighbours
+  \begin{scope}[shift={(1.10,2.7)}]
+    \node[tlbl, teal!70!black] at (0,0.26) {prescribed $w_{ij}$};
+    \node[tlbl, teal!70!black] at (0,-0.16) {\emph{fixed, not learned}};
+  \end{scope}
+
+  % Aggregation
+  \node[sumcirc] (agg) at (2.7, 2.7) {$\Sigma$};
+  \node[tlbl, anchor=north] at (agg.south) {over $j$};
+
+  % Self-update spline
+  \node[kanbox=violet, minimum width=32pt, minimum height=42pt]
+       (selfkan) at (2.7, 1.1) {};
+  \node[tlbl, violet!80!black, rotate=90] at (2.35, 1.1)
+       {KAN $\bm\Psi^{(l)}$};
+
+  % Spline curve inside self box
+  \begin{scope}[shift={(2.6,0.7)}]
+    \draw[violet!70!black, line width=0.7pt, smooth]
+         plot coordinates {(0,0) (0.06,0.05) (0.13,0.2) (0.22,0.48)
+                           (0.3,0.55) (0.38,0.52)};
+    \node[tlbl, violet!60!black] at (0.19, 0.72) {$\psi_p^{(l)}$};
+  \end{scope}
+
+  % Sum node
+  \node[sumcirc] (update) at (4.0, 1.9) {$+$};
+
+  % Arrows
+  \draw[arr] (msgkan.east) -- (agg.west);
+  \draw[arr] (agg.east) -| (update.north);
+  \node[tlbl, font=\tiny, anchor=south] at (3.44,2.78)
+       {$-D_\theta[\mathbf{L}_N\mathbf{h}^{(l)}]_i$};
+  \draw[arr] (selfkan.east) -| (update.south);
+  % identity bypass: the c_i(t) term of eq. (11), routed over the reaction box
+  \draw[arr] (2.00,1.1) |- (update.west);
+  \node[tlbl, font=\tiny, anchor=south] at (2.95,1.93) {identity};
+
+  % Input/output
+  \draw[darr] (-0.7, 2.7) -- (msgkan.west)
+       node[midway, above, tlbl]{$\mathbf{h}_j^{(l)}$};
+  \draw[darr] (-0.7, 1.1) -- (selfkan.west)
+       node[midway, above, tlbl]{$\mathbf{h}_i^{(l)}$};
+  \draw[darr] (update.east) -- ++(0.7,0)
+       node[midway, above, tlbl]{$\mathbf{h}_i^{(l+1)}$};
+  \node[tlbl, font=\tiny, anchor=north] at (1.9,0.44)
+       {$\mathbf{h}_i^{(l+1)}=\mathbf{h}_i^{(l)}+\bm\psi_\theta(\mathbf{h}_i^{(l)})-D_\theta[\mathbf{L}_N\mathbf{h}^{(l)}]_i$};
+\end{scope}
+
+% ============================================================
+% RIGHT: Symbolic recovery
+% ============================================================
+\begin{scope}[shift={(9.2,0)}]
+  \node[lbl, font=\small\bfseries, anchor=south] at (2.1,4.1)
+       {Symbolic Recovery};
+
+  % Learned spline plot
+  \begin{scope}[shift={(0.0,2.4)}]
+    \draw[black!40, ->, line width=0.4pt] (0,0) -- (2.0,0)
+         node[right, tlbl]{$c$};
+    \draw[black!40, ->, line width=0.4pt] (0,0) -- (0,1.5)
+         node[above, tlbl]{$\phi(c)$};
+    % Learned spline (sigmoidal, like Hill)
+    \draw[blue!70!black, line width=1.2pt, smooth]
+         plot coordinates {(0,0.02) (0.2,0.05) (0.4,0.12) (0.6,0.3)
+                           (0.8,0.6) (1.0,0.9) (1.2,1.1) (1.4,1.2)
+                           (1.6,1.25) (1.8,1.27)};
+    \node[tlbl, blue!70!black] at (1.5,0.85) {learned};
+    % True Hill function
+    \draw[red!60!black, line width=0.8pt, dashed, smooth]
+         plot coordinates {(0,0.0) (0.2,0.04) (0.4,0.14) (0.6,0.31)
+                           (0.8,0.57) (1.0,0.86) (1.2,1.08) (1.4,1.19)
+                           (1.6,1.24) (1.8,1.26)};
+    \node[tlbl, red!60!black] at (0.5,0.85) {true};
+  \end{scope}
+
+  % Arrow down
+  \draw[arr, line width=0.8pt] (1.0, 2.35) -- (1.0, 1.95)
+       node[midway, right, tlbl]{LASSO};
+
+  % Bar chart (symbolic projection)
+  \begin{scope}[shift={(0.0,0.15)}]
+    \draw[black!40, ->, line width=0.4pt] (0,0) -- (3.8,0);
+    \draw[black!40, ->, line width=0.4pt] (0,0) -- (0,1.65)
+         node[above, tlbl]{$|\hat\alpha_q|$};
+
+    % Bars
+    \fill[gray!25]    (0.15,0) rectangle (0.40,0.12);
+    \fill[gray!25]    (0.50,0) rectangle (0.75,0.08);
+    \fill[gray!25]    (0.85,0) rectangle (1.10,0.05);
+    \fill[gray!25]    (1.20,0) rectangle (1.45,0.15);
+    \fill[gray!25]    (1.55,0) rectangle (1.80,0.10);
+    \fill[red!50!orange, opacity=0.85] (1.90,0) rectangle (2.15,1.40);
+    \fill[gray!25]    (2.25,0) rectangle (2.50,0.07);
+    \fill[gray!25]    (2.60,0) rectangle (2.85,0.04);
+
+    % Labels
+    \node[font=\tiny, rotate=55, anchor=east, text=black!60] at (0.28,-0.07) {$1$};
+    \node[font=\tiny, rotate=55, anchor=east, text=black!60] at (0.63,-0.07) {$x$};
+    \node[font=\tiny, rotate=55, anchor=east, text=black!60] at (0.98,-0.07) {$x^2$};
+    \node[font=\tiny, rotate=55, anchor=east, text=black!60] at (1.33,-0.07) {$x^3$};
+    \node[font=\tiny, rotate=55, anchor=east, text=black!60] at (1.68,-0.07) {MM};
+    \node[font=\tiny, rotate=55, anchor=east, text=red!70!black]
+         at (2.03,-0.07) {\textbf{Hill}};
+    \node[font=\tiny, rotate=55, anchor=east, text=black!60] at (2.38,-0.07) {$e^{-x}$};
+    \node[font=\tiny, rotate=55, anchor=east, text=black!60] at (2.73,-0.07) {$\ln$};
+
+    % Winner annotation
+    \draw[red!60!black, ->, line width=0.5pt] (2.5,1.3) -- (2.18,1.3)
+         node[left, xshift=-5pt, tlbl, text=red!70!black, font=\tiny\bfseries]
+              {$\hat{\psi}{\propto}\frac{c^2}{K^2{+}c^2}$};
+  \end{scope}
+
+  % Epsilon label
+  \node[lbl, green!50!black, font=\scriptsize\bfseries] at (2.9, 0.3)
+       {$\epsilon_{\mathrm{recon}}$};
+\end{scope}
+
+% ============================================================
+% Bottom flow arrows connecting the three panels
+% ============================================================
+\draw[darr, line width=1.0pt] (2.1, 2.5) -- (2.7, 2.5)
+     node[midway, above, lbl]{};
+\draw[darr, line width=1.0pt] (7.8, 2.2) -- (8.9, 2.8)
+     node[midway, above, lbl, rotate=18]{};
+
+% Phase labels at bottom
+\node[phase=blue!6, text width=45pt] (phase1) at (1.0, -0.9)
+     {Phase 1\\[2pt]\footnotesize Graph\\[1pt]\footnotesize Construction};
+\node[phase=teal!6, text width=45pt] (phase2) at (4.5, -0.9)
+     {Phase 2\\[2pt]\footnotesize RD-GKAN\\[1pt]\footnotesize Training};
+\node[phase=orange!6, text width=55pt] (phase3) at (8.3, -0.9)
+     {Phase 3--4\\[2pt]\footnotesize Stability +\\[1pt]\footnotesize Symbolic ID};
+
+\draw[arr, line width=0.7pt] (phase1.east) -- (phase2.west);
+\draw[arr, line width=0.7pt] (phase2.east) -- (phase3.west);
+
+\end{tikzpicture}%
+}% end resizebox
+\end{preview}
+\end{document}

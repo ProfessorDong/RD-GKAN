@@ -9,7 +9,7 @@ their original providers). Download each from the source below and place it unde
 | `MacroscaleTestbed/` | Macroscale molecular-communication testbed (Hofmann et al., 2023) | IEEE DataPort, DOI `10.21227/ytkm-xp81` |
 | `ProtonPumpingBacteria/` | *E. coli* proton-pump MC testbed (Grebenstein et al., *IEEE T-MBMC*, 2019) | Dataset accompanying the paper, DOI `10.1109/TMBMC.2019.2957783` |
 | `AnalogNetworkCoding/` | Analog network coding MC relay testbed (Hofmann et al., *IEEE GLOBECOM*, 2023) | DOI `10.1109/GLOBECOM54140.2023.10437513` |
-| `GeorgiaTechQS/` | *P. aeruginosa* quorum-sensing dose-response (Rattray et al., *mBio*, 2022) | DOI `10.1128/mbio.00745-22`; data in the authors' `hierarchy` repository |
+| `GeorgiaTechQS/` | *P. aeruginosa* quorum-sensing dose-response (Thomas et al., *PLoS Biology*, 2025) | DOI `10.1371/journal.pbio.3003316`; data in the authors' `hierarchy` repository (Zenodo `10.5281/zenodo.15808353`) |
 | `10XBreastCancer/` | 10x Visium human breast cancer (Visium, 2020) | 10x Genomics public datasets (`10xgenomics.com/datasets`) |
 | `10xVisiumCRC/` | 10x Visium HD human colon cancer (not used in the final paper) | 10x Genomics public datasets |
 | `CCIBenchmark/` | Human intestine spatial transcriptomics (Fawkner-Corbett et al., *Cell*, 2021) | GEO `GSM4797918` (series `GSE158328`), DOI `10.1016/j.cell.2020.12.016` |
