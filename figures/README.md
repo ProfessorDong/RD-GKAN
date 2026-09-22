@@ -18,11 +18,11 @@ Figures 3-15 are data plots.
 
 ## Copyright
 
-The figures these files produce appear in the accepted article
+The figures these files produce appear in the published article
 
 > L. Dong, "Interpretable Reaction-Diffusion Learning for Molecular Communication via Graph
 > Kolmogorov-Arnold Networks," IEEE Transactions on Molecular, Biological, and Multi-Scale
-> Communications, accepted 2026.
+> Communications, 2026, doi: 10.1109/TMBMC.2026.3731398.
 
 Copyright in the published article, including its figures, is held by the IEEE. These source
 files are provided for reproducibility and are covered by the repository's MIT license as
