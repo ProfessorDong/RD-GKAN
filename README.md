@@ -4,7 +4,8 @@ Code and derived results for the paper
 
 > **Interpretable Reaction–Diffusion Learning for Molecular Communication via Graph Kolmogorov–Arnold Networks**
 > Liang Dong, Baylor University / UT Southwestern.
-> IEEE Transactions on Molecular, Biological, and Multi-Scale Communications, 2026.
+> IEEE Transactions on Molecular, Biological, and Multi-Scale Communications,
+> vol. 12, pp. 1056–1076, 2026.
 > DOI: [10.1109/TMBMC.2026.3731398](https://doi.org/10.1109/TMBMC.2026.3731398)
 
 RD-GKAN is a graph learning architecture whose forward pass is constrained to implement
@@ -75,8 +76,7 @@ Health (NIH) under Grant R01CA309499.
 
 ## Citation
 
-The paper is published by IEEE TMBMC and citable by its DOI. The volume, issue, and page range
-will be added here once the article is assigned to an issue.
+If you use this code or the derived results, please cite the paper.
 
 ```bibtex
 @article{Dong2026RDGKAN,
@@ -84,9 +84,10 @@ will be added here once the article is assigned to an issue.
   title   = {Interpretable Reaction--Diffusion Learning for Molecular Communication
              via Graph {K}olmogorov--{A}rnold Networks},
   journal = {IEEE Trans. Mol. Biol. Multi-Scale Commun.},
+  volume  = {12},
+  pages   = {1056--1076},
   year    = {2026},
-  doi     = {10.1109/TMBMC.2026.3731398},
-  note    = {Early access}
+  doi     = {10.1109/TMBMC.2026.3731398}
 }
 ```
 

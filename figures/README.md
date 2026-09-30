@@ -22,7 +22,7 @@ The figures these files produce appear in the published article
 
 > L. Dong, "Interpretable Reaction-Diffusion Learning for Molecular Communication via Graph
 > Kolmogorov-Arnold Networks," IEEE Transactions on Molecular, Biological, and Multi-Scale
-> Communications, 2026, doi: 10.1109/TMBMC.2026.3731398.
+> Communications, vol. 12, pp. 1056-1076, 2026, doi: 10.1109/TMBMC.2026.3731398.
 
 Copyright in the published article, including its figures, is held by the IEEE. These source
 files are provided for reproducibility and are covered by the repository's MIT license as
