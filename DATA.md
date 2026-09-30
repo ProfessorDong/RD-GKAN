@@ -2,7 +2,9 @@
 
 The raw data are **not** redistributed in this repository (they total ~46 GB and are owned by
 their original providers). Download each from the source below and place it under
-`data/<directory>/`. The committed `results/*.json` files were produced from these datasets.
+`data/<directory>/`. The committed `results/*.json` files were produced from these datasets,
+and are the derived values reported in the paper (IEEE TMBMC, vol. 12, pp. 1056-1076, 2026,
+doi [10.1109/TMBMC.2026.3731398](https://doi.org/10.1109/TMBMC.2026.3731398)).
 
 | `data/` directory | Dataset / paper | Source & accession |
 |---|---|---|
