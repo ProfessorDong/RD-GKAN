@@ -69,6 +69,18 @@ A CUDA-capable GPU is recommended but not required.
    Outputs are written to `results/*.json`. The JSON files committed here are the exact
    derived values used in the paper.
 
+**One naming caveat when comparing JSON fields to the paper.** The `avg_degree` field means
+two different things depending on which graph builder produced it:
+
+| Produced by | `avg_degree` is | Example |
+|---|---|---|
+| `run_revised_experiments.py` / `run_spatial_rigorous.py` (tissue graphs) | the unweighted neighbor count | breast 4.86, intestine 6.30 |
+| `build_knn_graph` in `run_new_datasets.py` (ERK, wound, temporal) | the *weighted* degree, `W.sum()/N`, i.e. the sum of Gaussian edge weights per node | ERK `5.18` |
+
+The paper reports neighbor counts throughout, so the ERK graph is described there as
+`k`=6 with average degree **6.71**, not the `5.18` stored in
+`results/erk_rigorous.json`. Both describe the same graph; only the summary statistic differs.
+
 ## Funding
 
 Supported in part by the National Cancer Institute (NCI) of the National Institutes of

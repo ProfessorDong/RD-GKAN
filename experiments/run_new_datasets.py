@@ -45,7 +45,14 @@ from run_synthetic_rd import BSplineKAN, RD_GKAN, MLPReaction
 # UTILITIES
 # ============================================================
 def build_knn_graph(positions, k=6, sigma=None):
-    """Build k-NN graph with Gaussian kernel weights."""
+    """Build k-NN graph with Gaussian kernel weights.
+
+    Returns (L_norm, W, avg_deg). NOTE: avg_deg is the *weighted* degree,
+    W.sum() / N, i.e. the mean sum of Gaussian edge weights per node, not the
+    neighbor count. Because the weights are <= 1 it reads lower than the
+    topological degree (ERK: 5.18 weighted vs 6.71 neighbors). The paper quotes
+    neighbor counts, so use (W > 0).sum() / N when comparing against it.
+    """
     N = len(positions)
     tree = KDTree(positions)
     dists, indices = tree.query(positions, k=k+1)
